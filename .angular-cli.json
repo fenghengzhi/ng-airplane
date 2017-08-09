@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "compile/manga",
       "assets": [
         "assets",
         "favicon.ico"
