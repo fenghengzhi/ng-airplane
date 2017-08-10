@@ -5,11 +5,15 @@ import {AppComponent} from './app.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HeaderComponent } from './header/header.component';
+import { ContentComponent } from './content/content.component';
+import { MangaboxComponent } from './content/mangabox/mangabox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContentComponent,
+    MangaboxComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
