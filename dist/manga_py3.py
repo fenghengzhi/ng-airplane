@@ -64,7 +64,7 @@ def server_static(filepath):
 ######### WEBAPP ROUTERS ###############
 @route('/')
 def home():
-    return '<html><body><script>milib.openUrl("http://127.0.0.1:8080/manga/index.html")</script></body></html>'
+    return '<html><body><script>milib.openUrl("http://127.0.0.1:8080/oldmanga/index.html")</script></body></html>'
 
 
 ######### WEBAPP ROUTERS ###############
