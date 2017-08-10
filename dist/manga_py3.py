@@ -78,6 +78,7 @@ app.route('/<filepath:path>', method='GET')(server_static)
 
 try:
     server = MyWSGIRefServer(host="127.0.0.1", port="8080")
+    webbrowser.open_new('http://127.0.0.1:8080/manga/manga.html')
     app.run(server=server,reloader=False)
 except (Exception) as ex:
     print("Exception: %s" % repr(ex))
