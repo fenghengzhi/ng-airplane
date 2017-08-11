@@ -76,6 +76,7 @@ app.route('/proxy', method='GET')(proxy)
 app.route('/proxy1/<url:path>', method='GET')(proxy1)
 app.route('/<filepath:path>', method='GET')(server_static)
 
+import webbrowser
 try:
     server = MyWSGIRefServer(host="127.0.0.1", port="8080")
     webbrowser.open_new('http://127.0.0.1:8080/manga/manga.html')
