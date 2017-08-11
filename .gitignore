@@ -5,6 +5,8 @@
 /out-tsc
 /dist/main.py
 /dist/manga/*.map
+!/dist/manga/*.js
+!/dist/manga/*.css
 
 # dependencies
 /node_modules

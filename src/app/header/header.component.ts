@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
+  }
+
+  exportText: string = '';
+
+  export() {
+    this.exportText = window.localStorage.mangadata;
+  }
+
+  import(importData) {
+    console.log(importData);
+    // window.localStorage.mangadata=importData;
   }
 
 }

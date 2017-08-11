@@ -29,10 +29,10 @@
             其他
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">关服</a>
-            <a class="dropdown-item" href="#">清空</a>
-            <a class="dropdown-item" href="#">导出</a>
-            <a class="dropdown-item" href="#">导入</a>
+            <a class="dropdown-item" href="/__exit">关服</a>
+            <a class="dropdown-item" href="#" onclick="if(confirm('确认清空数据？')){delete window.localStorage.mangadata;}">清空</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exportModal" (click)="export();">导出</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#importModal">导入</a>
           </div>
         </div>
       </li>
@@ -43,3 +43,42 @@
     </form>
   </div>
 </nav>
+<!-- Modal -->
+<div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control" >{{exportText}}</textarea>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea #importData class="form-control"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="import(importData.value)">导入</button>
+      </div>
+    </div>
+  </div>
+</div>
