@@ -11,7 +11,7 @@ export class ContentComponent implements OnInit, OnChanges {
   // @Input()
   // private mangaData: Map<string, MangaDatum> = new Map();
   @Input()
-  private mangaData: { [key: string]: MangaDatum; };
+  public mangaData: { [key: string]: MangaDatum; };
 
   constructor() {
 

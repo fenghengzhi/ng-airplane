@@ -37,8 +37,8 @@ testem.log
 /typings
 
 # e2e
-/e2e/*.js
-/e2e/*.map
+/Angjular/e2e/*.js
+/Angjular/e2e/*.map
 
 # System Files
 .DS_Store
