@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MangaDatum} from "../../MangaDatum";
+
 
 @Component({
   selector: 'app-mangabox',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mangabox.component.less']
 })
 export class MangaboxComponent implements OnInit {
+  @Input()
+  public mangaDatum: MangaDatum;
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
+    // console.log(this.mangaDatum);
   }
 
 }

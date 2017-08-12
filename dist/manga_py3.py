@@ -64,7 +64,7 @@ def server_static(filepath):
 ######### WEBAPP ROUTERS ###############
 @route('/')
 def home():
-    return '<html><body><script>milib.openUrl("http://127.0.0.1:8080/oldmanga/index.html")</script></body></html>'
+    return '<html><body><script>milib.openUrl("http://localhost:8080/oldmanga/index.html")</script></body></html>'
 
 
 ######### WEBAPP ROUTERS ###############
@@ -78,8 +78,8 @@ app.route('/<filepath:path>', method='GET')(server_static)
 
 import webbrowser
 try:
-    server = MyWSGIRefServer(host="127.0.0.1", port="8080")
-    webbrowser.open_new('http://127.0.0.1:8080/manga/manga.html')
+    server = MyWSGIRefServer(host="0.0.0.0", port="8080")
+    webbrowser.open_new('http://localhost:8080/manga/manga.html')
     app.run(server=server,reloader=False)
 except (Exception) as ex:
     print("Exception: %s" % repr(ex))

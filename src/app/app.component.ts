@@ -1,37 +1,38 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
 import 'rxjs/Rx';
 import {Observable} from "rxjs";
+import {MangaDatum} from "./MangaDatum";
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit {
-  mangaData: {
-    chapterdata: {
-      author: string;
-      brief: string;
-      mangaurl: string;
-      chapters: Array<{ title: string; url: string; }>;
-    };
-    coverurl: string;
-    lastview: number;//下标
-    name: string;
-    time: number;//时间戳
-  };
-  mangalist: Array<string>;
-  filterRule: { sortMethod: string; filterMethod: string; searchName: string; };
-  title = 'app';
-  dataSource: Observable<any>;
+export class AppComponent {
+  public mangaData: { [key: string]: MangaDatum; }={};
+  // private mangaData: Map<string, MangaDatum> = new Map();
+  private filterRule: { sortMethod: string; filterMethod: string; searchName: string; };
 
-  constructor(public http: Http) {
-    this.dataSource = this.http.get('/oldmanga/mangalist.txt').map(response=>response.text());
-    this.dataSource.subscribe(data => this.mangalist = data.toString().trim().replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n'));
-  }
+  constructor(private http: Http, private changeDetectorRef: ChangeDetectorRef) {
+    changeDetectorRef.detach();
+    this.http.get('/oldmanga/mangalist.txt').map(response => response.text())
+      .subscribe(data => {
+        let mangaList = data.toString().trim().replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n')
+        let mangaDataStore = JSON.parse(window.localStorage.mangaData || '{}');
+        // for (let mangaUrl of mangaList) {
+        //   this.mangaData.set(mangaUrl, mangaDataStore[mangaUrl]);
+        //
+        // }
+        // this.mangaData={};
+        for (let mangaUrl of mangaList) {
+          this.mangaData[mangaUrl] = mangaDataStore[mangaUrl];
+        }
+        // changeDetectorRef.detectChanges();
+        // changeDetectorRef.markForCheck();
+        changeDetectorRef.reattach();
 
-  ngOnInit() {
-
+      });
   }
 }
