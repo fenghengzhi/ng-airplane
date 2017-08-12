@@ -1,0 +1,6 @@
+<div id="mangalistbox" role="tablist" aria-multiselectable="true">
+  <app-mangabox
+    *ngFor="let mangaDatum of mangaData | object2array;trackBy:trackByFn"
+    [mangaDatum]="mangaDatum"></app-mangabox>
+</div>
+

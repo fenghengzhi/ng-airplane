@@ -9,7 +9,7 @@
 !/dist/manga/*.css
 
 # dependencies
-/node_modules
+/Angular/node_modules
 
 # IDEs and editors
 /.idea
