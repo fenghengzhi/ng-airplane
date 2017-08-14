@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ChapterData} from "../../../MangaDatum";
 
 @Component({
@@ -6,20 +6,13 @@ import {ChapterData} from "../../../MangaDatum";
   templateUrl: './chapterbox.component.html',
   styleUrls: ['./chapterbox.component.less']
 })
-export class ChapterboxComponent implements OnInit {
+export class ChapterboxComponent {
   @Input()
   public chapterData: ChapterData;
-
-  constructor() {
-
-  }
-
-  ngOnInit() {
-    console.log(this.chapterData.chapters);
-  }
+  @Output()
+  private lastviewChange: EventEmitter<number> = new EventEmitter<number>();
 
   trackByFn(index, item: { title: string; url: string; }) {
-    return item.url; // or item.id
-
+    return item.url;
   }
 }

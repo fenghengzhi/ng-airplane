@@ -9,7 +9,7 @@
 !/dist/manga/*.css
 
 # dependencies
-/Angular/node_modules
+/node_modules
 
 # IDEs and editors
 /.idea
@@ -37,8 +37,8 @@ testem.log
 /typings
 
 # e2e
-/Angjular/e2e/*.js
-/Angjular/e2e/*.map
+/e2e/*.js
+/e2e/*.map
 
 # System Files
 .DS_Store

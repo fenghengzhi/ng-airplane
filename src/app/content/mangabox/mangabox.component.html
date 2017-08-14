@@ -1,0 +1,32 @@
+<div class="card">
+  <a class="card-header" style="color: inherit; cursor: default; text-decoration: none;" role="tab"
+     [href]="mangaDatum.chapterdata.mangaurl" target="_blank">
+    <div class="mangabox">
+      <div class="mangacover" (click)="$event.stopPropagation();$event.preventDefault();showCover=true;">
+        <img *ngIf="showCover" [src]="mangaDatum.coverurl" alt="" class="img-fluid">
+        <div *ngIf="showCover===false">显示封面</div>
+      </div>
+      <div class="mangaboxcolumn" style="flex-grow:1">
+        <div class="manganame">{{mangaDatum.name}}</div>
+        <div class="lastviewtitle">看到：{{mangaDatum.chapterdata.chapters[mangaDatum.lastview]?.title||'未观看'}}</div>
+        <div class="newesttitle">
+          最新：{{mangaDatum.chapterdata.chapters[mangaDatum.chapterdata.chapters.length-1]?.title}}
+        </div>
+      </div>
+      <div class="mangaboxcolumn">
+        <button class="collapsed btn btn-success btn-sm my-1" data-toggle="collapse" data-parent="#mangaListBox"
+                [attr.href]="'#'+mangaDatum.chapterdata.mangaurl|url2varname" aria-expanded="true">
+          展开/隐藏
+        </button>
+        <a class="lastview openurl btn btn-success btn-sm my-1"
+           [href]="mangaDatum.chapterdata.chapters[mangaDatum.lastview]?.url||mangaDatum.chapterdata.chapters[0]?.url"
+           target="_blank">上次观看</a>
+        <a class="newest openurl btn btn-success btn-sm my-1"
+           [href]="mangaDatum.chapterdata.chapters[mangaDatum.chapterdata.chapters.length-1]?.title"
+           (click)="lastviewChange.emit({mangaurl:mangaDatum.chapterdata.mangaurl,lastview:mangaDatum.chapterdata.chapters.length-1})">最新一话</a>
+      </div>
+    </div>
+  </a>
+  <app-chapterbox [attr.id]="mangaDatum.chapterdata.mangaurl|url2varname" class="collapse" role="tabpanel"
+                  [chapterData]="mangaDatum.chapterdata"></app-chapterbox>
+</div>

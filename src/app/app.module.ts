@@ -13,6 +13,8 @@ import {ChapterboxComponent} from './content/mangabox/chapterbox/chapterbox.comp
 import { Map2arrayPipe } from './shared/map2array.pipe';
 import { Object2arrayPipe } from './shared/object2array.pipe';
 import { Url2varnamePipe } from './shared/url2varname.pipe';
+import { SortascPipe } from './shared/sortasc.pipe';
+import { SortdecPipe } from './shared/sortdec.pipe';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { Url2varnamePipe } from './shared/url2varname.pipe';
     Map2arrayPipe,
     Object2arrayPipe,
     Url2varnamePipe,
+    SortascPipe,
+    SortdecPipe,
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
