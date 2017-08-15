@@ -79,7 +79,7 @@ export class AppComponent {
 
     this.changeDetectorRef.detach();
 
-    this.http.get('/oldmanga/mangalist.txt?' + Math.random(), {responseType: ResponseContentType.Text}).map(response => response.text())
+    this.http.get('/mangalist.txt?' + Math.random(), {responseType: ResponseContentType.Text}).map(response => response.text())
       .subscribe(data => {
         let mangaList = data.toString().trim().replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n')
         let mangaDataStore = JSON.parse(window.localStorage.mangaData || '{}');
