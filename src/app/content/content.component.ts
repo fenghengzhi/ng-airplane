@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MangaDatum} from "../MangaDatum";
 
 
@@ -7,24 +7,16 @@ import {MangaDatum} from "../MangaDatum";
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.less']
 })
-export class ContentComponent implements OnChanges {
+export class ContentComponent {
 
   @Input()
   public mangaData: { [key: string]: MangaDatum; };
   @Input()
   public filter: { sortMethod: string; filterMethod: string; searchName: string; };
-
-
-  constructor() {
-
-  }
-
-  ngOnChanges() {
-
-  }
-
+  @Output()
+  public lastViewChange: EventEmitter<{ mangaUrl: string; lastView: number; }> = new EventEmitter<{ mangaUrl: string; lastView: number; }>();
 
   trackByFn(index, item: MangaDatum) {
-    return item.chapterdata.mangaurl; // or item.id
+    return item.chapterData.mangaUrl; // or item.id
   }
 }

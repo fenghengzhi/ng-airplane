@@ -10,10 +10,11 @@ export class HeaderComponent {
   private filter: EventEmitter<{ sortMethod: string; filterMethod: string; searchName: string; }> = new EventEmitter<{ sortMethod: string; filterMethod: string; searchName: string; }>();
 
   @Output()
-  private updateManga: EventEmitter<any> = new EventEmitter<any>();
+  public updateManga: EventEmitter<any> = new EventEmitter<any>();
 
   @Input()
-  public updateProcess: number = -1;
+  public updateProcess: { current: number; total: number; } = {current: -1, total: 0};
+
 
   constructor() {
 

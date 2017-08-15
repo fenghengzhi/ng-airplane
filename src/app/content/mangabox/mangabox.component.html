@@ -1,32 +1,33 @@
 <div class="card">
   <a class="card-header" style="color: inherit; cursor: default; text-decoration: none;" role="tab"
-     [href]="mangaDatum.chapterdata.mangaurl" target="_blank">
+     [href]="mangaDatum.chapterData.mangaUrl" target="_blank">
     <div class="mangabox">
-      <div class="mangacover" (click)="$event.stopPropagation();$event.preventDefault();showCover=true;">
-        <img *ngIf="showCover" [src]="mangaDatum.coverurl" alt="" class="img-fluid">
+      <div class="mangacover" (click)="$event.stopPropagation();$event.preventDefault();mangaDatum.coverUrl?showCover=true:0">
+        <img *ngIf="showCover" [src]="mangaDatum.coverUrl" alt="" class="img-fluid">
         <div *ngIf="showCover===false">显示封面</div>
       </div>
       <div class="mangaboxcolumn" style="flex-grow:1">
-        <div class="manganame">{{mangaDatum.name}}</div>
-        <div class="lastviewtitle">看到：{{mangaDatum.chapterdata.chapters[mangaDatum.lastview]?.title||'未观看'}}</div>
+        <div class="manganame">{{mangaDatum.name||mangaDatum.chapterData.mangaUrl}}</div>
+        <div class="lastviewtitle">看到：{{mangaDatum.chapterData.chapters[mangaDatum.lastView]?.title||'未观看'}}</div>
         <div class="newesttitle">
-          最新：{{mangaDatum.chapterdata.chapters[mangaDatum.chapterdata.chapters.length-1]?.title}}
+          最新：{{mangaDatum.chapterData.chapters[mangaDatum.chapterData.chapters.length-1]?.title}}
         </div>
       </div>
       <div class="mangaboxcolumn">
         <button class="collapsed btn btn-success btn-sm my-1" data-toggle="collapse" data-parent="#mangaListBox"
-                [attr.href]="'#'+mangaDatum.chapterdata.mangaurl|url2varname" aria-expanded="true">
+                [attr.href]="'#'+mangaDatum.chapterData.mangaUrl|url2varname" aria-expanded="true">
           展开/隐藏
         </button>
         <a class="lastview openurl btn btn-success btn-sm my-1"
-           [href]="mangaDatum.chapterdata.chapters[mangaDatum.lastview]?.url||mangaDatum.chapterdata.chapters[0]?.url"
+           [href]="mangaDatum.chapterData.chapters[mangaDatum.lastView]?.url||mangaDatum.chapterData.chapters[0]?.url||('javascript:void(0);'|safe)"
            target="_blank">上次观看</a>
         <a class="newest openurl btn btn-success btn-sm my-1"
-           [href]="mangaDatum.chapterdata.chapters[mangaDatum.chapterdata.chapters.length-1]?.title"
-           (click)="lastviewChange.emit({mangaurl:mangaDatum.chapterdata.mangaurl,lastview:mangaDatum.chapterdata.chapters.length-1})">最新一话</a>
+           [href]="mangaDatum.chapterData.chapters[mangaDatum.chapterData.chapters.length-1]?.url||('javascript:void(0);'|safe)" target="_blank"
+           (click)="lastViewChange.emit({mangaUrl:mangaDatum.chapterData.mangaUrl,lastView:mangaDatum.chapterData.chapters.length-1})">最新一话</a>
       </div>
     </div>
   </a>
-  <app-chapterbox [attr.id]="mangaDatum.chapterdata.mangaurl|url2varname" class="collapse" role="tabpanel"
-                  [chapterData]="mangaDatum.chapterdata"></app-chapterbox>
+  <app-chapterbox [attr.id]="mangaDatum.chapterData.mangaUrl|url2varname" class="collapse" role="tabpanel"
+                  [chapterData]="mangaDatum.chapterData"
+                  (lastViewChange)="lastViewChange.emit({mangaUrl:mangaDatum.chapterData.mangaUrl,lastView:$event})"></app-chapterbox>
 </div>

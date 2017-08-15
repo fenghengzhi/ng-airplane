@@ -15,6 +15,7 @@ import { Object2arrayPipe } from './shared/object2array.pipe';
 import { Url2varnamePipe } from './shared/url2varname.pipe';
 import { SortascPipe } from './shared/sortasc.pipe';
 import { SortdecPipe } from './shared/sortdec.pipe';
+import { SafePipe } from './shared/safe.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SortdecPipe } from './shared/sortdec.pipe';
     Url2varnamePipe,
     SortascPipe,
     SortdecPipe,
+    SafePipe,
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,

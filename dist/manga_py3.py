@@ -60,11 +60,11 @@ def __ping():
 def server_static(filepath):
     return static_file(filepath, root='./')
 
-
+appurl='http://localhost:8080/oldmanga/index.html'
 ######### WEBAPP ROUTERS ###############
 @route('/')
 def home():
-    return '<html><body><script>milib.openUrl("http://localhost:8080/oldmanga/index.html")</script></body></html>'
+    return '<html><body><script>milib.openUrl("'+appurl+'")</script></body></html>'
 
 
 ######### WEBAPP ROUTERS ###############
@@ -75,11 +75,12 @@ app.route('/__ping', method=['GET','HEAD'])(__ping)
 app.route('/proxy', method='GET')(proxy)
 app.route('/proxy1/<url:path>', method='GET')(proxy1)
 app.route('/<filepath:path>', method='GET')(server_static)
+app.route('/<filepath:path>', method='POST')(server_static)
 
 import webbrowser
 try:
     server = MyWSGIRefServer(host="0.0.0.0", port="8080")
-    webbrowser.open_new('http://localhost:8080/manga/manga.html')
+    webbrowser.open_new(appurl)
     app.run(server=server,reloader=False)
 except (Exception) as ex:
     print("Exception: %s" % repr(ex))

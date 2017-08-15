@@ -69,6 +69,7 @@
 					brief:undefined,
 					mangaurl:mangaurl,
 					chapters:[]
+          //{title:,url:}
 				},
 				coverurl:undefined,
 				lastview:undefined,
@@ -98,7 +99,6 @@
 						var chapters=manga.find('a.am-btn-secondary');
 						if(mangadata[mangaurl].chapterdata.chapters.length!==chapters.length){
 							mangadata[mangaurl].time=(new Date()).valueOf();//时间戳精确到毫秒
-							var chapters=manga.find('a.am-btn-secondary');
 							mangadata[mangaurl].chapterdata.chapters=new Array(chapters.length);//集数信息
 							//mangadata[url].chapters.forEach()
 							for(var i=0;i<chapters.length;++i){

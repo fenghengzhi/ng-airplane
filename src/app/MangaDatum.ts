@@ -1,7 +1,7 @@
 export class MangaDatum {
-  chapterdata: ChapterData;
-  coverurl: string;
-  lastview: number;//下标
+  chapterData: ChapterData;
+  coverUrl: string;
+  lastView: number;//下标
   name: string;
   time: number;//时间戳
 }
@@ -9,6 +9,6 @@ export class MangaDatum {
 export class ChapterData {
   author: string;
   brief: string;
-  mangaurl: string;
+  mangaUrl: string;
   chapters: Array<{ title: string; url: string; }>;
 }

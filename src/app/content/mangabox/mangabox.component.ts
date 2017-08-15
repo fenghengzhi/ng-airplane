@@ -11,9 +11,8 @@ export class MangaboxComponent {
   @Input()
   public mangaDatum: MangaDatum;
   @Output()
-  private lastviewChange: EventEmitter<{ mangaurl: string; lastview: number; }> = new EventEmitter<{ mangaurl: string; lastview: number; }>();
+  public lastViewChange: EventEmitter<{ mangaUrl: string; lastView: number; }> = new EventEmitter<{ mangaUrl: string; lastView: number; }>();
   public showCover = false;
 
-  lastviewChangeHandler(){}
 
 }

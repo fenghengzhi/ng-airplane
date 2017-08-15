@@ -10,7 +10,7 @@ export class ChapterboxComponent {
   @Input()
   public chapterData: ChapterData;
   @Output()
-  private lastviewChange: EventEmitter<number> = new EventEmitter<number>();
+  public lastViewChange: EventEmitter<number> = new EventEmitter<number>();
 
   trackByFn(index, item: { title: string; url: string; }) {
     return item.url;

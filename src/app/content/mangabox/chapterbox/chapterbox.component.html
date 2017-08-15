@@ -9,7 +9,7 @@
   <div class="chapterlistbox">
     <div *ngFor="let chapter of chapterData.chapters;index as i;trackBy:trackByFn" class="col-xl-1 col-sm-2 col-3 p-1">
       <a class="btn btn-primary btn-block openurl" [href]="chapter.url" target="_blank"
-         (click)="lastviewChange.emit(i)">{{chapter.title}}</a>
+         (click)="lastViewChange.emit(i)">{{chapter.title}}</a>
     </div>
   </div>
 </div>
