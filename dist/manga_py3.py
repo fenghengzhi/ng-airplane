@@ -60,7 +60,7 @@ def __ping():
 def server_static(filepath):
     return static_file(filepath, root='./')
 
-appurl='http://localhost:8080/oldmanga/index.html'
+appurl='http://localhost:8080/manga_ng/index.html'
 ######### WEBAPP ROUTERS ###############
 @route('/')
 def home():
@@ -75,7 +75,6 @@ app.route('/__ping', method=['GET','HEAD'])(__ping)
 app.route('/proxy', method='GET')(proxy)
 app.route('/proxy1/<url:path>', method='GET')(proxy1)
 app.route('/<filepath:path>', method='GET')(server_static)
-app.route('/<filepath:path>', method='POST')(server_static)
 
 import webbrowser
 try:
