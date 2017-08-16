@@ -25,8 +25,8 @@
     "cheerio": "^1.0.0-rc.2",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
+    "popper.js": "^1.12.1",
     "rxjs": "^5.4.1",
-    "tether": "^1.4.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

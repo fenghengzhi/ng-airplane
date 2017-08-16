@@ -1,7 +1,7 @@
-<div id="mangaListBox" role="tablist" aria-multiselectable="true">
+<div id="mangaListBox" role="tablist">
   <app-mangabox
     *ngFor="let mangaDatum of mangaData|object2array|sortdec:(filter.sortMethod.slice(0,4)==='name')?'name':'time':updateProcess.current as mangaArray;index as i;trackBy:trackByFn"
-    [mangaDatum]="mangaDatum"
+    class="card" [mangaDatum]="mangaDatum"
     [class.hide]="!(!mangaDatum.name?.toLowerCase().search(filter.searchName.toLowerCase())&&(filter.filterMethod==='new'?mangaDatum.lastView!==mangaDatum.chapterData.chapters.length-1:true)&&(filter.filterMethod==='read'?mangaDatum.lastView===mangaDatum.chapterData.chapters.length-1:true))"
     [style.order]="(filter.sortMethod==='oldfirst'||filter.sortMethod==='nameasc')?mangaArray.length-i:1+i"
     (lastViewChange)="lastViewChange.emit($event)"

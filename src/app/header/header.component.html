@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top bg-primary">
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
               {{updateProcess.current+'/'+updateProcess.total}}
             </div>
           </div>
-          <button class="btn btn-secondary btn-block" type="button"
+          <button class="btn btn-light" type="button"
                   (click)="updateManga.emit()"
                   [disabled]="updateProcess.current>=0"
                   [style.visibility]="updateProcess.current<0?'visible':'hidden'">
@@ -45,19 +45,15 @@
         </div>
 
       </li>
-      <li class="nav-item mx-1">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle btn-block" type="button" id="dropdownMenuButton"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            其他
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/__exit">关服</a>
-            <a class="dropdown-item" href="javascript:void(0);"
-               onclick="if(confirm('确认清空数据？')){delete window.localStorage.mangaData;}">清空</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exportModal" (click)="export();">导出</a>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#importModal">导入</a>
-          </div>
+
+      <li class="nav-item dropdown mx-1">
+        <button class="dropdown-toggle btn btn-light" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</button>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="/__exit">关服</a>
+          <a class="dropdown-item" href="javascript:void(0);"
+             onclick="if(confirm('确认清空数据？')){delete window.localStorage.mangaData;}">清空</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exportModal" (click)="export();">导出</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#importModal">导入</a>
         </div>
       </li>
     </ul>

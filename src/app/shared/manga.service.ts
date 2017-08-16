@@ -70,6 +70,7 @@ export class MangaService {
         ++(updateProcess.current);
         if (updateProcess.current === updateProcess.total) {
           updateProcess.current = -1;
+          // updateProcess.current = 8;
         }
 
         this.changeDetectorRef.reattach();
