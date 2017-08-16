@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ChangeDetectorRef, NgModule, ApplicationRef} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 
