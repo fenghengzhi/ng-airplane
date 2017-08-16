@@ -3,11 +3,11 @@
   <div class="brief">{{chapterData.brief}}</div>
   <div style="display:flex;flex-direction:row;justify-content:flex-end;border: solid #eee;border-width:1px 0px">
     <p style="flex-grow:1;text-align:left;">漫画章节</p>
-    <div class="chaptersort">正序↑</div>
-    <div class="chaptersort">倒序↓</div>
+    <div class="chaptersort" [style.color]="isReverse?'black':'red'" (click)="isReverse=false">正序↑</div>
+    <div class="chaptersort" [style.color]="isReverse?'red':'black'" (click)="isReverse=true">倒序↓</div>
   </div>
   <div class="chapterlistbox">
-    <div *ngFor="let chapter of chapterData.chapters;index as i;trackBy:trackByFn" class="col-xl-1 col-sm-2 col-3 p-1">
+    <div *ngFor="let chapter of chapterData.chapters as chapters;index as i;trackBy:trackByFn" [style.order]="isReverse?chapters.length-i:1+i" class="col-xl-1 col-sm-2 col-3 p-1">
       <a class="btn btn-primary btn-block openurl" [href]="chapter.url" target="_blank"
          (click)="lastViewChange.emit(i)">{{chapter.title}}</a>
     </div>

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MangaDatum} from "../../MangaDatum";
+import {MangaDatum} from "../../shared/MangaDatum";
 
 
 @Component({

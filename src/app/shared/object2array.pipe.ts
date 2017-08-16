@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class Object2arrayPipe implements PipeTransform {
 
   transform(value: any, args?: any): Array<any> {
-    // console.log(value);
+    // console.log('pipe');
     let array = [];
     for (let i in value) {
       // console.log(i);

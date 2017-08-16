@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ChapterData} from "../../../MangaDatum";
+import {ChapterData} from "../../../shared/MangaDatum";
 
 @Component({
   selector: 'app-chapterbox',
@@ -11,6 +11,7 @@ export class ChapterboxComponent {
   public chapterData: ChapterData;
   @Output()
   public lastViewChange: EventEmitter<number> = new EventEmitter<number>();
+  public isReverse = true;
 
   trackByFn(index, item: { title: string; url: string; }) {
     return item.url;
