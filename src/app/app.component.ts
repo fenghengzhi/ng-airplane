@@ -20,18 +20,13 @@ export class AppComponent {
     this.mangaService.initialMangaData(this.mangaData, this.updateProcess);
   }
 
-  refreshMangaData = () => {
-    this.mangaData = Object.assign({}, this.mangaData);
-  }
-
   filterHandler(filter) {
     this.filter = filter;
   }
 
   updateHandler() {
     // console.log('update');
-
-    this.mangaService.updateManga(this.mangaData, this.updateProcess, this.refreshMangaData);
+    this.mangaService.updateManga(this.mangaData, this.updateProcess);
   }
 
   lastViewChangeHandler(value: { mangaUrl: string; lastView: number; }) {

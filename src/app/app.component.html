@@ -1,5 +1,5 @@
 <app-header (filter)="filterHandler($event)" [updateProcess]="updateProcess"
             (updateManga)="updateHandler()"></app-header>
 
-<app-content [mangaData]="mangaData" [filter]="filter" (lastViewChange)="lastViewChangeHandler($event)"></app-content>
+<app-content [mangaData]="mangaData" [filter]="filter" [updateProcess]="updateProcess" (lastViewChange)="lastViewChangeHandler($event)"></app-content>
 

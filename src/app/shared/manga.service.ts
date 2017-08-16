@@ -33,7 +33,7 @@ export class MangaService {
       });
   }
 
-  updateManga(mangaData: { [key: string]: MangaDatum; }, updateProcess: { current: number; total: number; },refreshMangaData:Function) {
+  updateManga(mangaData: { [key: string]: MangaDatum; }, updateProcess: { current: number; total: number; }) {
     updateProcess.current = 0;
     for (let mangaUrl in mangaData) {
 
@@ -71,7 +71,7 @@ export class MangaService {
         if (updateProcess.current === updateProcess.total) {
           updateProcess.current = -1;
         }
-        refreshMangaData();
+
         this.changeDetectorRef.reattach();
         this.changeDetectorRef.detectChanges();
       });
