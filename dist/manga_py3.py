@@ -5,7 +5,7 @@ This is a sample for qpython webapp
 """
 
 from bottle import Bottle, ServerAdapter
-from bottle import run, debug, route, error, static_file, template, request
+from bottle import run, debug, route, error, static_file, template, request, response
 import requests
 import os
 os.chdir(os.path.dirname(__file__))
@@ -41,9 +41,30 @@ def proxy():
 
 @route('/proxy1/<url:path>')
 def proxy1(url):
-    response1=requests.get('http://'+url)
+    headers={};
+    for key in request.headers:
+        if key!='Host' and key!='Connection' and key!='Referer':
+            #print(key)
+            #print(request.headers[key])
+            headers[key]=request.headers[key]
+            #print(key)
+        print(key,request.headers[key])
+        if key=='Referer':
+            headers['Referer']=(request.headers['Referer']).replace('://localhost:8080/proxy1/','://')
+    headers['Host']=(url.split('/'))[0]
+    print(headers)
+    response1=requests.get('http://'+url,headers=headers,allow_redirects=False)
     result = response1.text
-    response.set_header('content-type',response1.headers['content-type'])
+    print(response1.headers)
+    print(response1.status_code)
+    response.status=response1.status_code
+    for key in response1.headers:
+        if key!='Server'and key!='Date'and key!='Connection'and key!='Content-Encoding'and key!='Access-Control-Allow-Origin'and key!='Transfer-Encoding'and key!='Content-Language':
+            #content-language
+            #print(key)
+            #print(response1.headers[key])
+            response.set_header(key,response1.headers[key])
+            #print(key)
     return result.replace('href="/','href="/proxy1/'+(url.split('/'))[0]+'/').replace('href="http://','href="/proxy1/')
 
 @route('/__exit', method=['GET','HEAD'])
